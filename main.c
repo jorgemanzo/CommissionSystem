@@ -33,13 +33,17 @@ char* getUserInput(){
 int main(){
     FILE *fp;
     char* file;
+    char read[1];
+    *read = 'r';
+    
     welcome();
     file = getUserInput();
-    /*fp = fopen(file,'r');
+    fp = fopen(file,read);
     if(fp != NULL){
         printf("We opened file %s\n",file);
+
+        fclose(fp);
     }
-    fclose(fp);*/
 
 
     free(file);
