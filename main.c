@@ -22,7 +22,7 @@ struct userNode{
 };
 
 struct userRoo {
-  struct* userNode root;
+  struct userNode* root;
 };
 
 void welcome(){
