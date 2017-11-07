@@ -50,7 +50,9 @@ char* getUserInput(){
 
 
 void makeBst(struct userRoot* bst, FILE* fp){
-  
+  bst = (struct userRoot* ) malloc(sizeof(struct userRoot));
+  bst->root = (struct userNode*) malloc(sizeof(struct userNode));
+
 }
 
 int main(){

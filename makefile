@@ -11,8 +11,8 @@ arrayTools.o: arrayTools.c arrayTools.h
 isValid.o: isValid.c isValid.h
 	$(CC) -c isValid.c
 
-a.out: main.o arrayTools.o isValid.o
-	$(CC) main.o arrayTools.o isValid.o -o a.out
+test: main.o arrayTools.o isValid.o
+	$(CC) main.o arrayTools.o isValid.o -o test
 
 clean:
-	rm -f a.out *.o
+	rm -f test *.o
