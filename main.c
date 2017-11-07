@@ -13,6 +13,18 @@
 #include <stdio.h>
 #endif
 
+
+struct userNode{
+  char* username;
+  char* patreonName;
+  int isPatreon;
+  double priorityFactor;
+}
+
+struct userRoot{
+  struct* userNode root;
+}
+
 void welcome(){
     printf("Welcome to Commission Selector!\n To begin, please enter the name of your file that holds the \n commissioner information, including the file extension.\n");
 }
@@ -34,8 +46,8 @@ int main(){
     FILE *fp;
     char* file;
     char read[1];
-    *read = 'r';
-    
+    read[0] = 'r';
+
     welcome();
     file = getUserInput();
     fp = fopen(file,read);
