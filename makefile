@@ -1,6 +1,6 @@
 CC=gcc --std=c99 -g
 
-all: a.out
+all: test
 
 main.o: main.c
 	$(CC) -c main.c

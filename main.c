@@ -13,15 +13,21 @@
 #include <stdio.h>
 #endif
 
+#ifndef STDLIB_H
+#define STDLIB_H
+#include <stdlib.h>
+#endif
 
 struct userNode{
   char* username;
-  char* patreonName;
   int isPatreon;
+  char* patreonName;
   double priorityFactor;
+  struct userNode* leftChild;
+  struct userNode* rightChild;
 };
 
-struct userRoo {
+struct userRoot {
   struct userNode* root;
 };
 
@@ -42,22 +48,30 @@ char* getUserInput(){
     return file;
 }
 
+
+void makeBst(struct userRoot* bst, FILE* fp){
+  
+}
+
 int main(){
     FILE *fp;
     char* file;
+    struct userRoot* bst;
     char read[1];
-    read[0] = 'r';
+    read[0] = 'r';//read mode
 
-    welcome();
-    file = getUserInput();
-    fp = fopen(file,read);
-    if(fp != NULL){
+    welcome();//print welcome message
+    file = getUserInput();//get user input for file name
+    fp = fopen(file,read);//open file
+    if(fp != NULL){//check if file was opened
         printf("We opened file %s\n",file);
-
-        fclose(fp);
     }
 
+    makeBst(bst, fp);
 
+
+
+    fclose(fp);
     free(file);
     return 0;
 }
