@@ -19,11 +19,11 @@ struct userNode{
   char* patreonName;
   int isPatreon;
   double priorityFactor;
-}
+};
 
-struct userRoot{
+struct userRoo {
   struct* userNode root;
-}
+};
 
 void welcome(){
     printf("Welcome to Commission Selector!\n To begin, please enter the name of your file that holds the \n commissioner information, including the file extension.\n");
