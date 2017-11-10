@@ -22,7 +22,7 @@ struct userNode{
   char* username;
   int isPatreon;
   char* patreonName;
-  double priorityFactor;
+  int priorityFactor;
   struct userNode* leftChild;
   struct userNode* rightChild;
 };
@@ -49,10 +49,38 @@ char* getUserInput(){
 }
 
 
+void bstCollect(struct userNode* bstNode,FILE* fp){
+  char* temp = makeCharArrayOfSize(256);
+  struct userNode* current;
+  current = bstNode;
+  while(fscanf(fp, temp)){
+    if(current->username != NULL){//if current user has a username
+
+    }
+    else if(current->username == NULL){//if they dont, lets append
+      current->username = makeCharArrayOfSize(strlen(temp));
+      strcpy(current->username,temp);
+      if(fscanf(fp,temp)){
+        current->isPatreon = atoi(temp);
+      }
+      if(current->isPatreon){
+        fscanf(fp,temp);
+        current->patreonName = makeCharArrayOfSize(temp);
+        strcpy(current->patreonName,temp);
+      }
+      fscanf(fp,temp);
+      current->priorityFactor = atoi(temp);
+
+    }
+  }
+}
+
 void makeBst(struct userRoot* bst, FILE* fp){
   bst = (struct userRoot* ) malloc(sizeof(struct userRoot));
   bst->root = (struct userNode*) malloc(sizeof(struct userNode));
-
+  bst->root->leftChild = NULL;
+  bst->root->rightChild = NULL;
+  bstCollect(bst->root, fp);
 }
 
 int main(){
@@ -71,7 +99,7 @@ int main(){
 
     makeBst(bst, fp);
 
-
+    printf("%s is the name!\n",bst->root->username);
 
     fclose(fp);
     free(file);
