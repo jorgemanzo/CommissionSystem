@@ -49,9 +49,16 @@ char* getUserInput(){
 }
 
 
-void makeNode(struct userNode* current){
-  current = (struct userNode*) malloc(sizeof(struct userNode));
-  current->leftChild = current->rightChild = NULL;
+void makeNode(struct userNode* current, int direction){
+  //direction, 1 for left, 2 for right
+  if(direction == 1){
+    current->leftChild = (struct userNode*) malloc(sizeof(struct userNode));
+    current->leftChild->leftChild = current->leftChild->rightChild = NULL;
+  }
+  else if(direction == 2){
+    current->rightChild = (struct userNode*) malloc(sizeof(struct userNode));
+    current->rightChild->leftChild = current->rightChild->rightChild = NULL;
+  }
 }
 
 void bstCollect(struct userNode* bstNode,FILE* fp){
@@ -63,11 +70,11 @@ void bstCollect(struct userNode* bstNode,FILE* fp){
       printf("What was just read: %s\n",temp);
       //if current user has a username
       while(current->username != NULL){
-        if((current->username) > *temp){//if the current node's name is greater
+        if(*(current->username) > *temp){//if the current node's name is greater
         //than the one in temp, put it in the left child
             if(current->leftChild == NULL){
               //if current's leftchild has not been created
-              makeNode(current->leftChild);
+              makeNode(current, 1);
 
             }
             current = current->leftChild;
@@ -76,7 +83,7 @@ void bstCollect(struct userNode* bstNode,FILE* fp){
           //if current node's name is lesser than the one in temp
             if(current->rightChild == NULL){
               //if current's right child has not been created
-              makeNode(current->rightChild);
+              makeNode(current, 2);
             }
             current = current->rightChild;
         }
