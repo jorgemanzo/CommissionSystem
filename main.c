@@ -53,7 +53,8 @@ void bstCollect(struct userNode* bstNode,FILE* fp){
   char* temp = makeCharArrayOfSize(256);
   struct userNode* current;
   current = bstNode;
-  while(fscanf(fp, temp)){
+
+  while(fscanf(fp, "%s",temp)){
     printf("What was just read: %s\n",temp);
     if(current->username != NULL){//if current user has a username
 
