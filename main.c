@@ -54,6 +54,7 @@ void bstCollect(struct userNode* bstNode,FILE* fp){
   struct userNode* current;
   current = bstNode;
   while(fscanf(fp, temp)){
+    printf("What was just read: %s\n",temp);
     if(current->username != NULL){//if current user has a username
 
     }
