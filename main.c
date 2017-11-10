@@ -61,10 +61,10 @@ void makeNode(struct userNode* current, int direction){
   }
 }
 
-void bstCollect(struct userNode* bstNode,FILE* fp){
+void bstCollect(struct userRoot* bstRoot,FILE* fp){
   char* temp = makeCharArrayOfSize(256);
   struct userNode* current;
-  current = bstNode;
+  current = bstRoot->root;
 
     while(fscanf(fp, "%s",temp) != EOF){
       printf("What was just read: %s\n",temp);
@@ -111,7 +111,7 @@ void makeBst(struct userRoot* bst, FILE* fp){
   bst->root = (struct userNode*) malloc(sizeof(struct userNode));
   bst->root->leftChild = NULL;
   bst->root->rightChild = NULL;
-  bstCollect(bst->root, fp);
+  bstCollect(bst, fp);
 }
 
 int main(){
