@@ -63,7 +63,7 @@ void bstCollect(struct userNode* bstNode,FILE* fp){
       printf("What was just read: %s\n",temp);
       //if current user has a username
       while(current->username != NULL){
-        if(current->username > *temp){//if the current node's name is greater
+        if((current->username) > *temp){//if the current node's name is greater
         //than the one in temp, put it in the left child
             if(current->leftChild == NULL){
               //if current's leftchild has not been created
