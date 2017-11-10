@@ -49,32 +49,54 @@ char* getUserInput(){
 }
 
 
+void makeNode(struct userNode* current){
+  current = (struct userNode*) malloc(sizeof(struct userNode));
+  current->leftChild = current->rightChild = NULL;
+}
+
 void bstCollect(struct userNode* bstNode,FILE* fp){
   char* temp = makeCharArrayOfSize(256);
   struct userNode* current;
   current = bstNode;
 
-  while(fscanf(fp, "%s",temp)){
-    printf("What was just read: %s\n",temp);
-    if(current->username != NULL){//if current user has a username
+    while(fscanf(fp, "%s",temp)){
+      printf("What was just read: %s\n",temp);
+      //if current user has a username
+      while(current->username != NULL){
+        if(current->username > *temp){//if the current node's name is greater
+        //than the one in temp, put it in the left child
+            if(current->leftChild == NULL){
+              //if current's leftchild has not been created
+              makeNode(current->leftChild);
 
-    }
-    else if(current->username == NULL){//if they dont, lets append
-      current->username = makeCharArrayOfSize(strlen(temp));
-      strcpy(current->username,temp);
-      if(fscanf(fp,temp)){
-        current->isPatreon = atoi(temp);
+            }
+            current = current->leftChild;
+        }
+        else{
+          //if current node's name is lesser than the one in temp
+            if(current->rightChild == NULL){
+              //if current's right child has not been created
+              makeNode(current->rightChild);
+            }
+            current = current->rightChild;
+        }
       }
-      if(current->isPatreon){
-        fscanf(fp,temp);
-        current->patreonName = makeCharArrayOfSize(strlen(temp));
-        strcpy(current->patreonName,temp);
-      }
-      fscanf(fp,temp);
-      current->priorityFactor = atoi(temp);
+      if(current->username == NULL){//if they dont, lets append
+        current->username = makeCharArrayOfSize(strlen(temp));
+        strcpy(current->username,temp);
+        if(fscanf(fp,"%s",temp)){
+          current->isPatreon = atoi(temp);
+        }
+        if(current->isPatreon){
+          fscanf(fp,"%s",temp);
+          current->patreonName = makeCharArrayOfSize(strlen(temp));
+          strcpy(current->patreonName,temp);
+        }
+        fscanf(fp,"%s",temp);
+        current->priorityFactor = atoi(temp);
 
+      }
     }
-  }
 }
 
 void makeBst(struct userRoot* bst, FILE* fp){
