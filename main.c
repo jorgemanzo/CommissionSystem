@@ -65,7 +65,7 @@ void bstCollect(struct userNode* bstNode,FILE* fp){
       }
       if(current->isPatreon){
         fscanf(fp,temp);
-        current->patreonName = makeCharArrayOfSize(temp);
+        current->patreonName = makeCharArrayOfSize(strlen(temp));
         strcpy(current->patreonName,temp);
       }
       fscanf(fp,temp);
