@@ -8,8 +8,8 @@
 #include "arrayTools.h"
 #endif
 
-#ifndef INFINITYSCANF_H
-#define INFINITYSCANF_H
+#ifndef INFIN_H
+#define INFIN_H
 #include "infinityScan.h"
 #endif
 
