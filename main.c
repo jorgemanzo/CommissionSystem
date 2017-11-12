@@ -42,7 +42,7 @@ void welcome(){
 
 
 char* getUserInput(){
-    char* file = makeCharArrayOfSize(256);
+    char* file;
     int confirm = 0;
     while(confirm == 0){
         printf("Please enter your text name here:\n");
