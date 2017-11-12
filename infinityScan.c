@@ -8,7 +8,7 @@
 #include "arrayTools.h"
 #endif
 
-void infinityScanf(char *string){
+char* infinityScanf(char *string){
 //    char *arrayPointer;
     string = makeCharArray();
     char k;
@@ -16,5 +16,5 @@ void infinityScanf(char *string){
     for(i = 0; (k = getchar()) != EOF && k != '\n'; i++){
         string = pushbackChar(&string,k);
     }
-    
+    return string;
 }
