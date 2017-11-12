@@ -8,9 +8,10 @@
 #include "arrayTools.h"
 #endif
 
-char* infinityScanf(char *string){
+char* infinityScanf(){
 //    char *arrayPointer;
-    string = makeCharArray();
+
+    char* string = makeCharArray();
     char k;
     int i;
     for(i = 0; (k = getchar()) != EOF && k != '\n'; i++){

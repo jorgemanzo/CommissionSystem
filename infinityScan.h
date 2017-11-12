@@ -8,7 +8,7 @@
 #include "arrayTools.h"
 #endif
 
-char* infinityScanf(char *);
+char* infinityScanf();
 /*Returns a character pointer to an array holding whatever input was given of
  * whatever size. To find the size, use something such as getSize from my other
  * function libraries */
