@@ -8,7 +8,7 @@
 #include "arrayTools.h"
 #endif
 
-char* infinityScanf(){
+char* iScan(){
 //    char *arrayPointer;
 
     char* string = makeCharArray();

@@ -8,9 +8,10 @@
 #include "arrayTools.h"
 #endif
 
-
-//#include "infinityScan.h"
-
+#ifndef ISCAN_H
+#define ISCAN_H
+#include "iScan.h"
+#endif
 
 #ifndef STDIO_H
 #define STDIO_H
@@ -45,7 +46,7 @@ char* getUserInput(){
     int confirm = 0;
     while(confirm == 0){
         printf("Please enter your text name here:\n");
-        file = infinityScanf();
+        file = iScan();
         printf("You Entered: %s\nIs this correct? Type 1 for yes, 0 for no.\n",file);
         scanf("%d",&confirm);
     }
