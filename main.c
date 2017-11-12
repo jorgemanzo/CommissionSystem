@@ -41,7 +41,7 @@ char* getUserInput(){
     int confirm = 0;
     while(confirm == 0){
         printf("Please enter your text name here:\n");
-        scanf("%s",file);
+        infinityScanf(file);
         printf("You Entered: %s\nIs this correct? Type 1 for yes, 0 for no.\n",file);
         scanf("%d",&confirm);
     }

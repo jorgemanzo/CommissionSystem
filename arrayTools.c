@@ -11,7 +11,6 @@
 char *makeCharArray(){
     char *p;
     p = (char *) malloc(sizeof(char)*1);
-    p[0] = '\0';
     return p;
 }
 
@@ -19,7 +18,6 @@ char *makeCharArray(){
 char *makeCharArrayOfSize(int n){
     char *p;
     p = (char *) malloc(sizeof(char)*n+1);
-    p[n] = '\0';
     return p;
 }
 
