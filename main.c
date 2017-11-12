@@ -8,10 +8,9 @@
 #include "arrayTools.h"
 #endif
 
-#ifndef INFIN_H
-#define INFIN_H
+
 #include "infinityScan.h"
-#endif
+
 
 #ifndef STDIO_H
 #define STDIO_H
