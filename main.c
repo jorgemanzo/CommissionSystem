@@ -8,6 +8,11 @@
 #include "arrayTools.h"
 #endif
 
+#ifndef ISCAN_H
+#define ISCAN_H
+#include "iScan.h"
+#endif
+
 #ifndef STDIO_H
 #define STDIO_H
 #include <stdio.h>
@@ -37,11 +42,11 @@ void welcome(){
 
 
 char* getUserInput(){
-    char* file = makeCharArrayOfSize(256);
+    char* file;
     int confirm = 0;
     while(confirm == 0){
         printf("Please enter your text name here:\n");
-        scanf("%s",file);
+        file = iScan();
         printf("You Entered: %s\nIs this correct? Type 1 for yes, 0 for no.\n",file);
         scanf("%d",&confirm);
     }
@@ -108,13 +113,14 @@ void bstCollect(struct userRoot* bstRoot,FILE* fp){
 
 
 
-void createBst(struct userRoot* bst, FILE* fp){
+struct userRoot* createBst(struct userRoot* bst, FILE* fp){
   bst = (struct userRoot* ) malloc(sizeof(struct userRoot));
   bst->root = (struct userNode*) malloc(sizeof(struct userNode));
   bst->root->username = NULL;
   bst->root->patreonName = NULL;
   bst->root->leftChild = NULL;
   bst->root->rightChild = NULL;
+  return bst;
 }
 
 int main(){
@@ -131,7 +137,7 @@ int main(){
         printf("We opened file %s\n",file);
     }
 
-    createBst(bst, fp);
+    bst = createBst(bst, fp);
     bstCollect(bst, fp);
 
 
