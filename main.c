@@ -126,7 +126,7 @@ int main(){
 
     welcome();//print welcome message
     file = getUserInput();//get user input for file name
-    fp = fopen(file,read);//open file
+    fp = fopen(file,'r');//open file
     if(fp != NULL){//check if file was opened
         printf("We opened file %s\n",file);
     }
