@@ -113,13 +113,14 @@ void bstCollect(struct userRoot* bstRoot,FILE* fp){
 
 
 
-void createBst(struct userRoot* bst, FILE* fp){
+struct userRoot* createBst(struct userRoot* bst, FILE* fp){
   bst = (struct userRoot* ) malloc(sizeof(struct userRoot));
   bst->root = (struct userNode*) malloc(sizeof(struct userNode));
   bst->root->username = NULL;
   bst->root->patreonName = NULL;
   bst->root->leftChild = NULL;
   bst->root->rightChild = NULL;
+  return bst;
 }
 
 int main(){
@@ -136,7 +137,7 @@ int main(){
         printf("We opened file %s\n",file);
     }
 
-    createBst(bst, fp);
+    bst = createBst(bst, fp);
     bstCollect(bst, fp);
 
 
