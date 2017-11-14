@@ -118,15 +118,57 @@ void createBst(struct userRoot* bst, FILE* fp){
 }
 */
 
-struct user* getNumberOfUsers(FILE *fp){
-  char* temp = makeCharArrayOfSize(256);
-  fscanf(fp, "%s",temp);
-
+struct user* createArray(){
+  struct user* array;
+  array = (struct user*) malloc(sizeof(struct user));
+  array->username = NULL;
+  array->isPatreon = 0;
+  array->patreonName = NULL;
+  array->priorityFactor = 0;
+  return array;
 }
+
+struct user* createFirstUser(struct user* userArray, FILE* fp){
+  userArray = createArray();
+  userArray->username = makeCharArrayOfSize(temp)
+  strcpy(userArray->username,temp); //Copy the username in
+  fscanf(fp, "%s", temp); //reading if the user is patreon
+  userArray->isPatreon = atoi(temp);
+  if(userArray->isPatreon){//if the user is a Patreon, copy their name
+    fscanf(fp, "%s", temp);//reading their patreon name
+    userArray->patreonName = makeCharArrayOfSize(temp);
+    strcpy(userArray->patreonName,temp);
+  }
+  fscanf(fp, "%s", temp);//get their priority factor
+  userArray->priorityFactor = atoi(temp);
+  return userArray;
+}
+
+struct user* getFileInfo(struct user* userArray, FILE* fp){
+  char* temp = makeCharArrayOfSize(256);
+  int capacity, size;
+  fscanf(fp, "%s", temp);
+  capacity = atoi(temp); //get the capcity of the will be array
+  while(fscanf(fp, "%s", temp) /*While there is a next line, this will always be a username*/){
+
+
+    if( userArray == NULL/*userArray doesn;t point to anything*/){
+      userArray = createFirstUser(userArray, fp);
+      size = 1;
+    }
+
+    else{
+      
+    }
+
+
+  }
+}
+
 int main(){
     FILE *fp;
     char* file;
-    struct userCapitan* userArray;
+    struct userCapitan* userArray = NULL;
     char read[1];
     read[0] = 'r';//read mode
 
@@ -139,8 +181,7 @@ int main(){
 
     //createBst(bst, fp);
     //bstCollect(bst, fp);
-    userArray = getNumberOfUsers(fp);
-
+    userArray = getFileInfo(userArray, fp);
 
 
     printf("%s is the name!\n",bst->root->username);
