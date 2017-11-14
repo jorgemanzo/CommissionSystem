@@ -8,11 +8,6 @@
 #include "arrayTools.h"
 #endif
 
-#ifndef ISCAN_H
-#define ISCAN_H
-#include "iScan.h"
-#endif
-
 #ifndef STDIO_H
 #define STDIO_H
 #include <stdio.h>
@@ -23,17 +18,17 @@
 #include <stdlib.h>
 #endif
 
-struct userNode{
+struct user{
   char* username;
   int isPatreon;
   char* patreonName;
   int priorityFactor;
-  struct userNode* leftChild;
-  struct userNode* rightChild;
+  //struct userNode* leftChild;
+  //struct userNode* rightChild;
 };
 
-struct userRoot {
-  struct userNode* root;
+struct userCapitan {
+  struct user* userArray;
 };
 
 void welcome(){
@@ -42,18 +37,18 @@ void welcome(){
 
 
 char* getUserInput(){
-    char* file;
+    char* file = makeCharArrayOfSize(256);
     int confirm = 0;
     while(confirm == 0){
         printf("Please enter your text name here:\n");
-        file = iScan();
+        scanf("%s",file);
         printf("You Entered: %s\nIs this correct? Type 1 for yes, 0 for no.\n",file);
         scanf("%d",&confirm);
     }
     return file;
 }
 
-
+/*
 void makeNode(struct userNode* current, int direction){
   //direction, 1 for left, 2 for right
   if(direction == 1){
@@ -113,32 +108,39 @@ void bstCollect(struct userRoot* bstRoot,FILE* fp){
 
 
 
-struct userRoot* createBst(struct userRoot* bst, FILE* fp){
+void createBst(struct userRoot* bst, FILE* fp){
   bst = (struct userRoot* ) malloc(sizeof(struct userRoot));
   bst->root = (struct userNode*) malloc(sizeof(struct userNode));
   bst->root->username = NULL;
   bst->root->patreonName = NULL;
   bst->root->leftChild = NULL;
   bst->root->rightChild = NULL;
-  return bst;
 }
+*/
 
+struct user* getNumberOfUsers(FILE *fp){
+  char* temp = makeCharArrayOfSize(256);
+  fscanf(fp, "%s",temp);
+
+}
 int main(){
     FILE *fp;
     char* file;
-    struct userRoot* bst;
+    struct userCapitan* userArray;
     char read[1];
     read[0] = 'r';//read mode
 
     welcome();//print welcome message
     file = getUserInput();//get user input for file name
-    fp = fopen(file,'r');//open file
+    fp = fopen(file,read);//open file
     if(fp != NULL){//check if file was opened
         printf("We opened file %s\n",file);
     }
 
-    bst = createBst(bst, fp);
-    bstCollect(bst, fp);
+    //createBst(bst, fp);
+    //bstCollect(bst, fp);
+    userArray = getNumberOfUsers(fp);
+
 
 
     printf("%s is the name!\n",bst->root->username);
